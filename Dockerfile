@@ -1,4 +1,8 @@
-FROM ubuntu:latest
-LABEL authors="alexcooke"
+FROM python:3.9
 
-ENTRYPOINT ["top", "-b"]
+COPY . .
+
+RUN pip install -U pip
+RUN pip install -r requirements.txt
+
+CMD tail -f /dev/null
