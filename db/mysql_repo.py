@@ -20,10 +20,16 @@ class mysqlrepository(Repository):
         self.connection.close()
 
     def mapper(self, entry: dict) -> GivenEntry:
-        given_entry = GivenEntry(english_form=entry.get('english_form'))
+        given_entry = GivenEntry(english_form=entry.get('english_form'),
+                                 romanised_hindi=entry.get('romanised_hindi'),
+                                 devanagari=entry.get('devanagari'),
+                                 pos=entry.get('pos'),
+                                 gender=entry.get('gender'),
+                                 definition=entry.get('definition'))
         return given_entry
+
     def load_dictionary(self) -> list[GivenEntry]:
-        sql = 'SELECT * FROM dictionary'
+        sql = 'SELECT * FROM word_info'
         self.cursor.execute(sql)
         entries = [{'english_form': english_form, 'romanised_hindi': romanised_hindi,
                     'devanagari': devanagari, 'pos': pos, 'gender': gender, 'definition': definition}

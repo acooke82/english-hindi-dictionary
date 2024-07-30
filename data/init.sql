@@ -8,7 +8,7 @@ CREATE TABLE word_info (
     devanagari NVARCHAR(30),
     pos VARCHAR(30),
     gender VARCHAR(30),
-    definition VARCHAR(30));
+    definition VARCHAR(300));
 
 INSERT INTO word_info
 (english_form, romanised_hindi, devanagari, pos, gender, definition)
