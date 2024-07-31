@@ -1,18 +1,15 @@
-from mysql-connector import cursor
-import mysql.connector
-import db.mysql_repo
+import db.mysql_repo2
+from mysql.connector import cursor
 
-repo = db.mysql_repo.MysqlRepository()
+repo = db.mysql_repo2.MysqlRepository()
 
-def query_db(sql):
+
+def query(sql):
     repo.cursor.execute(sql)
     return list(repo.cursor)
 
-def check_columns():
-    sql = ("SELECT * FROM word_info")
-    result = query_db(sql)
-    return result
 
-def test_check_columns():
-    result = check_columns()
-    assert "english_form" in result
+def test_query():
+    sql = ("SELECT english_form FROM word_info")
+    result = query(sql)
+    return result[0][0]

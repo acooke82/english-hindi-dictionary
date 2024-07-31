@@ -1,17 +1,22 @@
 from model.enums import *
-from model.givenentry import *
 
 class Word:
-    def __init__(self, given_entry, other_language_form, definition, pos):
-        self.given_entry = given_entry
-        self.other_language_form = other_language_form
-        self.definition = definition
+    def __init__(self,
+                 english_form: str = None,
+                 romanised_hindi: str = None,
+                 devanagari: str = None,
+                 pos: PartOfSpeech = None,
+                 definition: str = None):
+        self.english_form = english_form
+        self.romanised_hindi = romanised_hindi
+        self.devanagari = devanagari
         self.pos = pos
+        self.definition = definition
 
-    def get_word_info(self):
-        fields = {'given_entry': self.given_entry,
-                  'other langauge equivalent': self.other_language_form,
-                  'definition': self.definition,
-                  'part of speech': self.pos}
-        return fields
+    def assign_gender(pos: PartOfSpeech) -> Gender:
+        if pos == PartOfSpeech.noun:
+            return Gender
 
+    def assign_tense(pos: PartOfSpeech) -> Tense:
+        if pos == PartOfSpeech.verb:
+            return Tense

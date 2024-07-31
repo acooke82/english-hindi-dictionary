@@ -1,7 +1,8 @@
-from db.repository import *
+"""from db.repository import *
 import mysql.connector
 
-class mysqlrepository(Repository):
+
+class MysqlRepository(Repository):
 
     def __init__(self):
         super().__init__()
@@ -18,21 +19,3 @@ class mysqlrepository(Repository):
     def __del__(self):
         self.cursor.close()
         self.connection.close()
-
-    def mapper(self, entry: dict) -> GivenEntry:
-        given_entry = GivenEntry(english_form=entry.get('english_form'),
-                                 romanised_hindi=entry.get('romanised_hindi'),
-                                 devanagari=entry.get('devanagari'),
-                                 pos=entry.get('pos'),
-                                 gender=entry.get('gender'),
-                                 definition=entry.get('definition'))
-        return given_entry
-
-    def load_dictionary(self) -> list[GivenEntry]:
-        sql = 'SELECT * FROM word_info'
-        self.cursor.execute(sql)
-        entries = [{'english_form': english_form, 'romanised_hindi': romanised_hindi,
-                    'devanagari': devanagari, 'pos': pos, 'gender': gender, 'definition': definition}
-                   for (english_form, romanised_hindi, devanagari, pos, gender, definition) in self.cursor]
-        dictionary = [self.mapper(entry) for entry in entries]
-        return dictionary
