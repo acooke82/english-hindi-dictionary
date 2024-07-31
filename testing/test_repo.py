@@ -1,14 +1,15 @@
-import db.mysql_repo
-
-repo = db.mysql_repo.MysqlRepository
+from db.mysql_repo import MysqlRepository
 
 
-def query(sql):
-    repo.cursor.execute(sql)
-    return list(repo.cursor)
-
-
-def test_query():
-    sql = ("SELECT english_form FROM word_info")
-    result = query(sql)
-    return result[0][0]
+def test_load_dict():
+    repo = MysqlRepository()
+    out = [('book', 'kitaab', 'किताब', 'noun', 'f',
+            'physical object consisting of a number of pages bound together'),
+           ('tea', 'cāya', 'चाय', 'noun', 'f',
+            'a beverage made by steeping tea leaves in water'),
+           ('water', 'pānī', 'पानी', 'noun', 'm',
+            'a liquid that descends from the clouds as rain, forms streams, lakes, and rivers'),
+           ('you', 'tuma', 'तुम', 'pronoun', None,
+            'the one being addressed, pronoun of the second person singular')]
+    result = repo.load_dictionary()
+    assert result == out
