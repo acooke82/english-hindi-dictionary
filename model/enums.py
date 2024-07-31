@@ -15,3 +15,8 @@ class PartOfSpeech(Enum):
     conjunction = 7
     article = 8
     interjection = 9
+
+class Tense(Enum):
+    present = 1
+    past = 2
+    future = 3
