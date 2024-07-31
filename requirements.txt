@@ -1,4 +1,12 @@
-pytest
-beautifulsoup4
-mysql-connector
-mysql
+pytest~=8.3.2
+beautifulsoup4~=4.12.3
+mysql-connector-python~=9.0.0
+
+soupsieve~=2.5
+pip~=23.2.1
+wheel~=0.41.2
+setuptools~=68.2.0
+pluggy~=1.5.0
+exceptiongroup~=1.2.2
+iniconfig~=2.0.0
+packaging~=24.1

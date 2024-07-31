@@ -1,7 +1,6 @@
-import db.mysql_repo2
-from mysql.connector import cursor
+import db.mysql_repo
 
-repo = db.mysql_repo2.MysqlRepository()
+repo = db.mysql_repo.MysqlRepository
 
 
 def query(sql):

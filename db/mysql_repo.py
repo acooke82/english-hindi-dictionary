@@ -1,5 +1,5 @@
-"""from db.repository import *
 import mysql.connector
+from db.repository import *
 
 
 class MysqlRepository(Repository):
@@ -10,7 +10,7 @@ class MysqlRepository(Repository):
             'user': 'root',
             'password': 'root',
             'host': 'localhost',  # to run LOCALLY, this should be localhost
-            'port': '32000',  # to run LOCALLY, this should be 32000
+            'port': 32000,  # to run LOCALLY, this should be 32000
             'database': 'dictionary'
         }
         self.connection = mysql.connector.connect(**config)
@@ -19,3 +19,9 @@ class MysqlRepository(Repository):
     def __del__(self):
         self.cursor.close()
         self.connection.close()
+
+    def load_dictionary(self) -> List[Word]:
+        sql = "SELECT * FROM word_info"
+        self.cursor.execute(sql)
+        result = self.cursor.fetchall()
+        return result

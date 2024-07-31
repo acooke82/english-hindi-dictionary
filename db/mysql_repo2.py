@@ -1,7 +1,8 @@
 import mysql.connector
+from db.repository import Repository
 
 
-class MysqlRepository:
+class MysqlRepository(Repository):
 
     def __init__(self):
         super().__init__()
