@@ -1,6 +1,4 @@
-from typing import List
 import db.mysql_repo
-from model.word import Word
 
 class Services:
 
