@@ -25,3 +25,9 @@ class MysqlRepository(Repository):
         self.cursor.execute(sql)
         result = self.cursor.fetchall()
         return result
+
+    def load_entry(self, input_form: str) -> List[Word]:
+        sql = "SELECT * FROM word_info WHERE english_form = %s"
+        self.cursor.execute(sql, (input_form,))
+        result = self.cursor.fetchall()
+        return result
