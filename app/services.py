@@ -7,8 +7,10 @@ class Services:
     def __init__(self):
         self.repo = db.mysql_repo.MysqlRepository()
 
-    #def load_entry(self, input_form: str) -> List[Word]:
-        #dictionary = self.repo.load_dictionary()
-        #return dictionary
+    def generate_entry(self, input_form: str):
+        #use case: take English input as surface form and return all relevant information for that entry from the db
+        dictionary = self.repo.load_entry(input_form)
+        return dictionary
+
 
 
