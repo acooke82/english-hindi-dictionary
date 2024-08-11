@@ -9,3 +9,7 @@ class Repository(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def load_dictionary(self) -> List[Word]:
         raise NotImplementedError
+    @abc.abstractmethod
+    def load_entry(self, input_form: str) -> List[Word]:
+        raise NotImplementedError
+

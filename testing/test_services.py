@@ -5,9 +5,10 @@ services = Services()
 repo = MysqlRepository()
 
 def test_generate_entry():
-    services.generate_entry('tea')
+    service = services.generate_entry('tea')
     entries = repo.load_entry('tea')
     assert len(entries) > 0
-    #print(entries)
+    assert len(service) > 0
+    assert service == entries
 
 
