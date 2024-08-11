@@ -10,11 +10,5 @@ I have defined five use cases so far as outlined below.
 
 `Example Input: “book”`
 
-`Example Output:`
-`English Form: "book"`
-`Romanised Hindi:  “kitaab”,` 
-`Devanagari script: “किताब”,`
-`Part of Speech: “noun”,`
-`Gender: “f”,`
-`Definition: "A collection of pages bound together."`
+`Example Output: "book", “kitaab”, “किताब”, “noun”, “f”, "A collection of pages bound together."`
 
