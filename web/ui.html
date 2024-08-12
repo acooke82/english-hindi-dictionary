@@ -22,7 +22,16 @@
 <pre id="response"></pre>
 
 <script>
+    async function handleSubmit1(event) {
+            event.preventDefault();
 
+            const inputForm = document.getElementById('input_form').value;
+            const response = await fetch(`/generate?input_form=${encodeURIComponent(inputForm)}`);
+            const myJson = await response.json();
+            document.getElementById('response').innerText = JSON.stringify(myJson, undefined, 2);
+        }
+
+    document.getElementById('generateForm').addEventListener('submit', handleSubmit1);
 </script>
 
 </body>
