@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 from logging.config import dictConfig
 
 from app.services import Services
@@ -32,11 +32,13 @@ def doc() -> str:
     with open("app/doc.html", "r") as f:
         return f.read()
 
+
 @app.route('/generate_form', methods=['GET'])
 def generate_form():
     app.logger.info('generate_form - Grabbed Request')
     with open("web/ui.html", "r") as f:
         return f.read()
+
 
 @app.route('/generate', methods=['GET'])
 def generate():
@@ -44,6 +46,7 @@ def generate():
     data = services.generate_entry(input_form)
     app.logger.info('/generate - Generated entry.')
     return jsonify(data)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
