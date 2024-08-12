@@ -21,7 +21,7 @@ dictConfig({
 })
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
-cors = CORS(app, resources={r"/parse": {"origins": "http://localhost:port"}})
+cors = CORS(app)
 
 services = Services()
 
@@ -32,6 +32,11 @@ def doc() -> str:
     with open("app/doc.html", "r") as f:
         return f.read()
 
+@app.route('/generate_form', methods=['GET'])
+def generate_form():
+    app.logger.info('generate_form - Grabbed Request')
+    with open("web/ui.html", "r") as f:
+        return f.read()
 
 @app.route('/generate', methods=['GET'])
 def generate():
@@ -39,7 +44,6 @@ def generate():
     data = services.generate_entry(input_form)
     app.logger.info('/generate - Generated entry.')
     return jsonify(data)
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
